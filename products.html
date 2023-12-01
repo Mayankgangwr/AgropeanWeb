@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!--header -->
+
+    <header class="header" data-header>
+        <div class="container">
+
+            <a href="index.html#home" class="logo">
+                <img src="./logo.png" width="45" alt="EduWeb logo">
+            </a>
+
+            <nav class="navbar" data-navbar>
+
+                <div class="wrapper">
+                    <a href="index.html#home" class="logo">
+                        <img src="./logo.png" width="75" height="75" alt="EduWeb logo">
+                        <p>Agropean Organics</p>
+                    </a>
+
+                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+
+                    <li class="navbar-item">
+                        <a href="index.html#home" class="navbar-link" data-nav-link>Home</a>
+                    </li>
+
+
+                    <li class="navbar-item">
+                        <a href="index.html#about" class="navbar-link" data-nav-link>About</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="index.html#courses" class="navbar-link" data-nav-link>Products</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="./gallery.html" class="navbar-link" data-nav-link>Gallery</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="index.html#contact" class="navbar-link" data-nav-link>Contact</a>
+                    </li>
+
+
+                    
+                    <li class="navbar-item">
+                        <a href="index.html#home" class="navbar-link" data-nav-link>Popular Crops</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="#" class="btn has-before">
+                    <span class="span">Download App</span>
+
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                </a>
+
+                <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
+
+            </div>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+
+        </div>
+    </header>
+    <style>
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px !important;
+        }
+    </style>
+    <!--Products-->
+    <section class="section course" aria-label="course" style="background-color: rgba(0, 0, 0, .1); margin-top: 25px;">
+       
+<p class="section-subtitle" style="font-size: 14px; font-weight: bold; color: gray; margin-bottom: 0;">
+    Our Products
+</p> 
+        <div class="cards">
+            <!--div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+        
+        
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+        
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+        
+        
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+        
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div>
+            <div class="card">
+                <img src="./logo.png" alt="Product Image">
+                <h2>Product Title</h2>
+                <button class="btn has-before">Buy Now</button>
+            </div-->
+        </div>
+    </section>
+    <script>
+         const params = new URLSearchParams(window.location.search);
+         const cId = parseInt(params.get("cid"));
+
+
+        const jsonData = [
+            
+            {
+                "id":1,
+                "cid":1,
+                "name": "astutosh",
+                "description": "Description for Product 1",
+                "price": 19.99,
+                "img":"2.png",
+            },
+            {
+                                "id":2,
+                                "cid":1,
+                "name": "Product 2",
+                "description": "Description for Product 2",
+                "price": 29.99,
+                "img":"3.png",
+
+            },
+            {
+                                "id":3,
+                                "cid":1,
+                "name": "Product 3",
+                "description": "Description for Product 3",
+                "price": 39.99,
+                "img":"4.png",
+            }
+        ];
+       
+        const product = cId ? jsonData.filter(item => item.cid === cId) : jsonData;
+
+        const container = document.getElementsByClassName("cards");
+        product.forEach(pro => {
+const cards = document.querySelector('.cards');
+            const card = `<div class="card">
+                <img src="./product/${pro.img}" alt="Product Image">
+                <h2>${pro.name}</h2>
+                <a class="btn has-before" href="pro-details.html?productId=${pro.id}">View Details</a>
+                </div>
+            `;
+cards.insertAdjacentHTML('afterbegin', card);
+        });
+    </script>
+
+
+
+
+
+
+
+    <!--
+            - #FOOTER
+          -->
+
+    <footer class="footer"
+        style="background: linear-gradient(45deg, hsl(106, 55%, 77%), hsla(106, 67%, 77%, .7)); color: #000;">
+
+        <div class="footer-top section" style="padding-block: 35px !important;">
+
+            <div class="footer-brand" style="display: grid; place-items: center;">
+
+                <a href="#" class="logo">
+                    <img src="./logo.png" width="162" height="50" alt="EduWeb logo">
+                </a>
+
+                <p class="footer-brand-text">
+                    Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+                </p>
+
+                <div class="wrapper">
+                    <span class="span">Add:</span>
+
+                    <address class="address">70-80 Upper St Norwich NR2</address>
+                </div>
+
+                <div class="wrapper">
+                    <span class="span">Call:</span>
+
+                    <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
+                </div>
+
+                <div class="wrapper">
+                    <span class="span">Email:</span>
+
+                    <a href="mailto:info@eduweb.com" class="footer-link">info@eduweb.com</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="links">
+                    <a href="">Privacy Policy</a>
+                    <a href=""> Return and Refund Policy</a>
+                    <a href=""> Shipping & Delivery Policy </a>
+                    <a href="">Terms & Conditions</a>
+                    <a href="">Terms of Use</a>
+                </div>
+                <p class="copyright">
+                    Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">Prashant Gangwar</a>
+                </p>
+
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+    <!--
+              - #BACK TO TOP
+            -->
+
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
+
+
+
+
+
+    <!--
+              - custom js link
+            -->
+    <script src="./script.js" defer></script>
+
+    <!--
+              - ionicon link
+            -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
+</nav>
+</body>
+
+</html>
